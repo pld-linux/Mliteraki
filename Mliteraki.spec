@@ -15,12 +15,12 @@ BuildRequires:	wxGTK-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Mliteraki is scruble-like game. It was written by Tomasz Mularczyk on
+Mliteraki is scrabble-like game. It was written by Tomasz Mularczyk on
 contest on kurnik.pl. This is Polish version of game.
 
 %description -l pl
 Mliteraki jest gr± polegaj±c± na uk³adaniu wyrazów, jest to klon
-popularnej gry scrable. Zosta³a napisana przez Tomasza Mularczyka na
+popularnej gry scrabble. Zosta³a napisana przez Tomasza Mularczyka na
 konkurs organizowany w portalu kurnik.pl. Jest to polska wersja gry.
 
 %define  _instdir  /usr/local/
