@@ -1,6 +1,6 @@
 
-Summary:	Polish version of Mliteraki game.
-Summary(pl):	Polska wersja gry Mliteraki.
+Summary:	Polish version of Mliteraki game
+Summary(pl):	Polska wersja gry Mliteraki
 Name:		Mliteraki
 Version:	1.0
 Release:	0.2
@@ -29,17 +29,14 @@ konkurs organizowany w portalu kurnik.pl. Jest to polska wersja gry.
 %setup -q -n Mliteraki
 %patch0 -p1
 
-
 %build
 %{__make}
-
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT$/%{_instdir}
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
