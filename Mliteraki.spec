@@ -1,4 +1,3 @@
-
 Summary:	Polish version of Mliteraki game
 Summary(pl):	Polska wersja gry Mliteraki
 Name:		Mliteraki
@@ -6,11 +5,12 @@ Version:	1.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Games
+# data from http://www.mecenat.neostrada.pl/hardmard/pliki/Mliter/ML10L.tar.gz
+# sources from http://www.mecenat.neostrada.pl/hardmard/pliki/Mliter/ML10Lkod.tar.gz ?
 Source0:	%{name}_pl-%{version}.tar.gz
 # Source0-md5:	91d5372cce673c4b9270f838fcf1b7c6
 Patch0:		%{name}_pl-fixes.patch
-URL:		http://www.mardo.prv.pl
-Requires:	wxGTK
+URL:		http://www.mardo.prv.pl/
 BuildRequires:	wxGTK-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -28,12 +28,13 @@ konkurs organizowany w portalu kurnik.pl. Jest to polska wersja gry.
 %patch0 -p0
 
 %build
-%{__cxx} `wxgtk-2.4-config --cflags` `wxgtk-2.4-config --libs` -o Mliter Mliter.cpp
+%{__cxx} %{rpmldflags} %{rpmcflags} \
+	`wxgtk-2.4-config --cflags` `wxgtk-2.4-config --libs` -o Mliter Mliter.cpp
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/games/Mliter_pl}
 
-install -d $RPM_BUILD_ROOT/{%{_bindir},%{_datadir}/games/Mliter_pl}
 cp -r dane $RPM_BUILD_ROOT%{_datadir}/games/Mliter_pl
 cp -r graf $RPM_BUILD_ROOT%{_datadir}/games/Mliter_pl
 cp -r html $RPM_BUILD_ROOT%{_datadir}/games/Mliter_pl
