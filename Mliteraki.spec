@@ -3,7 +3,7 @@ Summary:	Polish version of Mliteraki game
 Summary(pl):	Polska wersja gry Mliteraki
 Name:		Mliteraki
 Version:	1.0
-Release:	0.2
+Release:	0.3
 License:	GPL v2
 Group:		X11/Applications/Games
 Source0:	%{name}_pl-%{version}.tar.gz
@@ -35,6 +35,8 @@ konkurs organizowany w portalu kurnik.pl. Jest to polska wersja gry.
 %install
 rm -rf $RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT/{%{_instdir}/bin,%{%_instdir}/games/Mliter_pl}
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT$/%{_instdir}
 
@@ -43,15 +45,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%dir %{_instdir}/games/Mliter_pl/*
-%dir %{_instdir}/games/Mliter_pl/dane/*
-%dir %{_instdir}/games/Mliter_pl/graf/*
-%dir %{_instdir}/games/Mliter_pl/graf/plansza/*
-%dir %{_instdir}/games/Mliter_pl/graf/tlo/*
-%dir %{_instdir}/games/Mliter_pl/graf/plansza/formal/*
-%dir %{_instdir}/games/Mliter_pl/graf/plansza/rozm/*
-%dir %{_instdir}/games/Mliter_pl/html/*
-%dir %{_instdir}/games/Mliter_pl/html/zasady_files/*
-%dir %{_instdir}/games/Mliter_pl/slowniki/*
+%dir %{_instdir}/games/Mliter_pl/
+%dir %{_instdir}/games/Mliter_pl/dane/
+%dir %{_instdir}/games/Mliter_pl/graf/
+%dir %{_instdir}/games/Mliter_pl/html/
+%dir %{_instdir}/games/Mliter_pl/slowniki/
+%{_instdir}/games/Mliter_pl/*.txt
+%{_instdir}/games/Mliter_pl/dane/*
+%{_instdir}/games/Mliter_pl/graf/*
+%{_instdir}/games/Mliter_pl/html/*
+%{_instdir}/games/Mliter_pl/slowniki/*
 %attr(755,root,root) %{_instdir}/games/Mliter_pl/Mliter
 %attr(755,root,root) %{_instdir}/bin/*
