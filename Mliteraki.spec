@@ -3,7 +3,7 @@ Summary:	Polish version of Mliteraki game.
 Summary(pl):	Polska wersja gry Mliteraki.
 Name:		Mliteraki
 Version:	1.0
-Release:	0.1
+Release:	0.2
 License:	GPL v2
 Group:		X11/Applications/Games
 Source0:	%{name}_pl-%{version}.tar.gz
@@ -56,6 +56,5 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_instdir}/games/Mliter_pl/html/*
 %dir %{_instdir}/games/Mliter_pl/html/zasady_files/*
 %dir %{_instdir}/games/Mliter_pl/slowniki/*
-%defattr(644,root,root,755)
-%attr(644,root,root) %{_instdir}/games/Mliter_pl/*.txt
+%attr(755,root,root) %{_instdir}/games/Mliter_pl/Mliter
 %attr(755,root,root) %{_instdir}/bin/*
