@@ -1,0 +1,218 @@
+--- Mliter.cpp.or	2004-06-17 11:55:09.000000000 +0200
++++ Mliter.cpp	2004-06-17 17:42:08.217359872 +0200
+@@ -8,7 +8,7 @@
+ #define tLINUX
+ //#define tDEBUG //dodatkowe komentarze
+ //#define tDEBUG2 //wnikliwe komentarze
+-#include <stdlib.h> //dla rand()
++#include <stdlib.h> //dla rand() i getenv()
+ #include <wx/panel.h>
+ #include <wx/ffile.h>
+ #include <wx/string.h>
+@@ -85,22 +85,22 @@
+ char* plik_listwa;
+ 
+ 
+-char* plik_konfig="./Mliter.kfg";
+-char* plik_zmn="./graf/pzmn.JPG";
+-char* plik_btnTak="./graf/btn3tak.JPG";
+-char* plik_btnNie="./graf/btn3nie.JPG";
+-char* plik_btnPoloz="./graf/btn3pol.JPG";
+-char* plik_btnWymien="./graf/btn3wym.JPG";
+-char* plik_btnPas="./graf/btn3pas.JPG";
+-char* plik_btnGo="./graf/btn3go.JPG";
+-char* plik_worek="./graf/worek.JPG";
+-char* plik_btn_strt="./graf/btn5strt.JPG";
+-char* plik_btn_opc= "./graf/btn5opc.JPG";
+-char* plik_opc_ok="./graf/btn5ok.JPG";
+-char* plik_opc_tlo="./graf/btn5tlo.JPG";
+-char* plik_opc_slow="./graf/btn5slow.JPG";
+-char* plik_opc_temat="./graf/btn5tem.JPG";
+-char* plik_stojaka="./graf/stojak4.JPG";
++char* plik_konfig; 
++char* plik_zmn="/usr/share/games/Mliter_pl/graf/pzmn.JPG";
++char* plik_btnTak="/usr/share/games/Mliter_pl/graf/btn3tak.JPG";
++char* plik_btnNie="/usr/share/games/Mliter_pl/graf/btn3nie.JPG";
++char* plik_btnPoloz="/usr/share/games/Mliter_pl/graf/btn3pol.JPG";
++char* plik_btnWymien="/usr/share/games/Mliter_pl/graf/btn3wym.JPG";
++char* plik_btnPas="/usr/share/games/Mliter_pl/graf/btn3pas.JPG";
++char* plik_btnGo="/usr/share/games/Mliter_pl/graf/btn3go.JPG";
++char* plik_worek="/usr/share/games/Mliter_pl/graf/worek.JPG";
++char* plik_btn_strt="/usr/share/games/Mliter_pl/graf/btn5strt.JPG";
++char* plik_btn_opc= "/usr/share/games/Mliter_pl/graf/btn5opc.JPG";
++char* plik_opc_ok="/usr/share/games/Mliter_pl/graf/btn5ok.JPG";
++char* plik_opc_tlo="/usr/share/games/Mliter_pl/graf/btn5tlo.JPG";
++char* plik_opc_slow="/usr/share/games/Mliter_pl/graf/btn5slow.JPG";
++char* plik_opc_temat="/usr/share/games/Mliter_pl/graf/btn5tem.JPG";
++char* plik_stojaka="/usr/share/games/Mliter_pl/graf/stojak4.JPG";
+ 
+ 
+ char* plik_ply[MAX_LITER]; //pliki liter
+@@ -2352,14 +2352,14 @@
+ {//inicjalizuje sciezki do plikow w menu
+ 	int i;
+ 	char* sciezka=(char*)malloc(100);
+-	strcpy(sciezka,"./graf/cpu1.JPG");
++	strcpy(sciezka,"/usr/share/games/Mliter_pl/graf/cpu1.JPG");
+ 	for (i=1;i<5;i++)
+ 	{
+ 		sciezka[10]=i+48;
+ 		plik_rodzaj_gracza[i]=strdup(sciezka);
+ 	}
+-	plik_rodzaj_gracza[0]=strdup("./graf/czlo.JPG");
+-	plik_rodzaj_gracza[5]=strdup("./graf/nikt.JPG");
++	plik_rodzaj_gracza[0]=strdup("/usr/share/games/Mliter_pl/graf/czlo.JPG");
++	plik_rodzaj_gracza[5]=strdup("/usr/share/games/Mliter_pl/graf/nikt.JPG");
+ 	free(sciezka);
+ }
+ 
+@@ -2374,9 +2374,9 @@
+ 
+ void wczytajDef()
+ {
+-	plik_tematu=strdup("./graf/plansza/rozm");
+-	plik_KDAWG=strdup("./slowniki/PL20030829.slo"); //sciezka do pliku z koncowym KDAWGgiem
+-	plik_tla=strdup("./graf/tlo/tlo2.JPG");
++	plik_tematu=strdup("/usr/share/games/Mliter_pl/graf/plansza/rozm");
++	plik_KDAWG=strdup("/usr/share/games/Mliter_pl/slowniki/PL20030829.slo"); //sciezka do pliku z koncowym KDAWGgiem
++	plik_tla=strdup("/usr/share/games/Mliter_pl/graf/tlo/tlo2.JPG");
+ }
+ 
+ void czyscDef()
+@@ -2506,10 +2506,10 @@
+ PomocFrame::PomocFrame(const wxString& title, const wxPoint& pos, const wxSize& size, long style)
+        : wxFrame(NULL, -1, title, pos, size, style) //konstruktor
+ {
+-		wxIcon ikona("./graf/pomoc.ICO",wxBITMAP_TYPE_ICO);
++		wxIcon ikona("/usr/share/games/Mliter_pl/graf/pomoc.ICO",wxBITMAP_TYPE_ICO);
+ 		SetIcon(ikona);
+ 		mlHtml *html = new mlHtml(this);
+-		html->LoadPage("./html/pomoc.htm");
++		html->LoadPage("/usr/share/games/Mliter_pl/html/pomoc.htm");
+ 		html->SetFonts(font_pomocy,"");
+ 		
+ }
+@@ -2517,10 +2517,10 @@
+ ZasadyFrame::ZasadyFrame(const wxString& title, const wxPoint& pos, const wxSize& size, long style)
+        : wxFrame(NULL, -1, title, pos, size, style) //konstruktor
+ {
+-		wxIcon ikona("./graf/pomoc.ICO",wxBITMAP_TYPE_ICO);
++		wxIcon ikona("/usr/share/games/Mliter_pl/graf/pomoc.ICO",wxBITMAP_TYPE_ICO);
+ 		SetIcon(ikona);
+ 		mlHtml *html = new mlHtml(this);
+-		html->LoadPage("./html/zasady.htm");
++		html->LoadPage("/usr/share/games/Mliter_pl/html/zasady.htm");
+ 		html->SetFonts(font_pomocy,"");
+ 		
+ }
+@@ -2528,10 +2528,10 @@
+ LicencjaFrame::LicencjaFrame(const wxString& title, const wxPoint& pos, const wxSize& size, long style)
+        : wxFrame(NULL, -1, title, pos, size, style) //konstruktor
+ {
+-		wxIcon ikona("./graf/pomoc.ICO",wxBITMAP_TYPE_ICO);
++		wxIcon ikona("/usr/share/games/Mliter_pl/graf/pomoc.ICO",wxBITMAP_TYPE_ICO);
+ 		SetIcon(ikona);
+ 		mlHtml *html = new mlHtml(this);
+-		html->LoadPage("./html/gplinfo.htm");
++		html->LoadPage("/usr/share/games/Mliter_pl/html/gplinfo.htm");
+ 		html->SetFonts(font_pomocy,"");
+ 		
+ }
+@@ -2599,7 +2599,7 @@
+ GraFrame::GraFrame(const wxString& title, const wxPoint& pos, const wxSize& size, long style)
+        : wxFrame(NULL,-1,title, pos, size, style) 
+ {
+-		wxIcon ikona("./graf/Mliter.ICO",wxBITMAP_TYPE_ICO);
++		wxIcon ikona("/usr/share/games/Mliter_pl/graf/Mliter.ICO",wxBITMAP_TYPE_ICO);
+ 		SetIcon(ikona);
+ 		initKomp();
+ 		gra_skonczona=false;
+@@ -2635,7 +2635,7 @@
+ 		strcpy(komun2,"przez pole z gwiazdka");
+ 		strcpy(komunAKC,"");
+ 
+-		inicjujPlansze("./dane/normalna.pln");
++		inicjujPlansze("/usr/share/games/Mliter_pl/dane/normalna.pln");
+ 		initPlytki();	
+ 		WczytajGrafike();
+ 
+@@ -4675,7 +4675,7 @@
+ {
+ 		int i;
+ 		zmieniam_grafike=true;
+-		wxIcon ikona("./graf/Mliter.ICO",wxBITMAP_TYPE_ICO);
++		wxIcon ikona("/usr/share/games/Mliter_pl/graf/Mliter.ICO",wxBITMAP_TYPE_ICO);
+ 		SetIcon(ikona);
+ 		initPlikiMenu();
+ 		wxImage *img=new wxImage(plik_tla,wxBITMAP_TYPE_JPEG);
+@@ -5103,7 +5103,7 @@
+ void StMenu::OnOpcjeTlo(wxCommandEvent& event)
+ { //wyswietla dialog - zmiane tla
+ 	char* tmps;
+-	wxFileDialog *wybierz=new wxFileDialog(this,"Wybierz plik t³a","./graf/tlo","","*.JPG",wxOPEN|wxFILE_MUST_EXIST);
++	wxFileDialog *wybierz=new wxFileDialog(this,"Wybierz plik t³a","/usr/share/games/Mliter_pl/graf/tlo","","*.JPG",wxOPEN|wxFILE_MUST_EXIST);
+ 	if (wybierz->ShowModal()==wxID_OK)
+ 	{
+ 		zmieniam_grafike=true;
+@@ -5111,14 +5111,14 @@
+ 		plik_tla=(char*)malloc(100);
+ 		wxStr2Str(plik_tla,wybierz->GetPath());
+ 
+-		wxFileName sciezka("./");
++		wxFileName sciezka("/usr/share/games/Mliter_pl/");
+ 		wxString kopia(sciezka.GetCwd());
+ 		wxString do_pliku(plik_tla);
+ 
+ 		if (do_pliku.StartsWith(kopia))
+ 		{//zeby zapamietac wzgledne polozenie
+ 			tmps=(char*)malloc(100);
+-			strcpy(plik_tla,"./graf/tlo/");
++			strcpy(plik_tla,"/usr/share/games/Mliter_pl/graf/tlo/");
+ 			wxStr2Str(tmps,wybierz->GetFilename());
+ 			strcat(plik_tla,tmps);
+ 			free(tmps);
+@@ -5135,21 +5135,21 @@
+ void StMenu::OnOpcjeSlow(wxCommandEvent& event)
+ { //wyswietla dialog - zmiane slownika
+ 	char* tmps;
+-	wxFileDialog *wybierz=new wxFileDialog(this,"Wybierz plik s³ownika","./slowniki","","*.slo",wxOPEN|wxFILE_MUST_EXIST);
++	wxFileDialog *wybierz=new wxFileDialog(this,"Wybierz plik s³ownika","/usr/share/games/Mliter_pl/slowniki","","*.slo",wxOPEN|wxFILE_MUST_EXIST);
+ 	if (wybierz->ShowModal()==wxID_OK)
+ 	{
+ 		free(plik_KDAWG);
+ 		plik_KDAWG=(char*)malloc(100);
+ 		wxStr2Str(plik_KDAWG,wybierz->GetPath());
+ 
+-		wxFileName sciezka("./");
++		wxFileName sciezka("/usr/share/games/Mliter_pl/");
+ 		wxString kopia(sciezka.GetCwd());
+ 		wxString do_pliku(plik_KDAWG);
+ 
+ 		if (do_pliku.StartsWith(kopia))
+ 		{//zeby zapamietac wzgledne polozenie
+ 			tmps=(char*)malloc(100);
+-			strcpy(plik_KDAWG,"./slowniki/");
++			strcpy(plik_KDAWG,"/usr/share/games/Mliter_pl/slowniki/");
+ 			wxStr2Str(tmps,wybierz->GetFilename());
+ 			strcat(plik_KDAWG,tmps);
+ 			free(tmps);
+@@ -5161,7 +5161,7 @@
+ void StMenu::OnOpcjeTemat(wxCommandEvent& event)
+ {//wyswietla dialog ze zmiana wygladu planszy
+ 	char* tmps;
+-	wxFileName sciezka("./");
++	wxFileName sciezka("/usr/share/games/Mliter_pl/");
+ 	wxString kopia(sciezka.GetCwd());
+ 	tmps=(char*)malloc(100);
+ 	wxStr2Str(tmps,kopia);
+@@ -5328,6 +5328,10 @@
+ 		wxImageHandler *icohnd=new wxICOHandler();
+ 		wxImage::AddHandler( icohnd );
+ 
++		plik_konfig = new char[256];
++		plik_konfig = strcpy((char *)plik_konfig,(char*)getenv("HOME"));
++		plik_konfig = strcat((char *)plik_konfig,(char*)"/Mliter.kfg");
++		
+ 		if (wczytajPlikKonf()>0) wczytajDef(); //jesli blad przy pliku to defaulty
+ 		wczytajSciezkiGraf();
+ 		wczytajKDAWG();
