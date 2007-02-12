@@ -1,5 +1,5 @@
 Summary:	Polish version of Mliteraki game
-Summary(pl.UTF-8):   Polska wersja gry Mliteraki
+Summary(pl.UTF-8):	Polska wersja gry Mliteraki
 Name:		Mliteraki
 Version:	1.0
 Release:	1
