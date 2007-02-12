@@ -1,5 +1,5 @@
 Summary:	Polish version of Mliteraki game
-Summary(pl):	Polska wersja gry Mliteraki
+Summary(pl.UTF-8):   Polska wersja gry Mliteraki
 Name:		Mliteraki
 Version:	1.0
 Release:	1
@@ -18,9 +18,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Mliteraki is scrabble-like game. It was written by Tomasz Mularczyk on
 contest on kurnik.pl. This is Polish version of game.
 
-%description -l pl
-Mliteraki jest gr± polegaj±c± na uk³adaniu wyrazów, jest to klon
-popularnej gry scrabble. Zosta³a napisana przez Tomasza Mularczyka na
+%description -l pl.UTF-8
+Mliteraki jest grÄ… polegajÄ…cÄ… na ukÅ‚adaniu wyrazÃ³w, jest to klon
+popularnej gry scrabble. ZostaÅ‚a napisana przez Tomasza Mularczyka na
 konkurs organizowany w portalu kurnik.pl. Jest to polska wersja gry.
 
 %prep
