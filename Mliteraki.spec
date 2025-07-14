@@ -25,7 +25,7 @@ konkurs organizowany w portalu kurnik.pl. Jest to polska wersja gry.
 
 %prep
 %setup -q -n Mliteraki
-%patch0 -p0
+%patch -P0 -p0
 
 %build
 %{__cxx} %{rpmldflags} %{rpmcflags} \
